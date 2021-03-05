@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'As a visitor' do
   before :each do
-    @flight_1 = Flight.create!(number: '1727', date:  '08/03/20', departure_city: 'Denver', arrival_city: 'Reno')
-    @flight_2 = Flight.create!(number: '1562', date:  '08/05/20', departure_city: 'Conway', arrival_city: 'Houston')
+    @flight_1 = Flight.create!(number: '1727', date:  '08/03/20', time: '12:00 pm', departure_city: 'Denver', arrival_city: 'Reno')
+    @flight_2 = Flight.create!(number: '1562', date:  '08/05/20', time: '08:00 am', departure_city: 'Conway', arrival_city: 'Houston')
   end
 
   describe 'When I visit the flights index page' do
