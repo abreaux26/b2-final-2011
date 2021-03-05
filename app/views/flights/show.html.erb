@@ -7,7 +7,10 @@
 <h3>Adult Passengers:</h3>
 <section class="adult-passengers">
   <% @adult_passengers.each do |passenger| %>
-    <li><%= passenger.name %></li>
+    <li id="passenger-<%= passenger.id %>">
+      <%= passenger.name %>
+      <%= button_to "Remove Passenger", flight_passenger_path(@flight, passenger), method: :delete %>
+    </li>
   <% end %>
 </section>
 
