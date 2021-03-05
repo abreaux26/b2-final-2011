@@ -26,7 +26,7 @@ RSpec.describe 'As a visitor' do
     it 'And I see that flights are listed in alphabetical order by departure city (A - Z)' do
       visit flights_path
 
-      expect(@flight_2.name).to appear_before(@flight_1.name)
+      expect(@flight_2.departure_city).to appear_before(@flight_1.departure_city)
     end
   end
 end
