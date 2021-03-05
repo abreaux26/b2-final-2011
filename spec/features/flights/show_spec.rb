@@ -53,5 +53,45 @@ RSpec.describe 'As a visitor' do
         expect(page).to have_content('Average age of adult passengers: 26')
       end
     end
+
+    it 'Next to each passengers name I see a button to remove that passenger from that flight' do
+      visit flight_path(@flight_1)
+
+      within("#passenger-#{@passenger_1.id}") do
+        expect(page).to have_button('Remove Passenger')
+      end
+    end
+
+    it 'I click on that button and am returned to the flights show page' do
+      visit flight_path(@flight_1)
+
+      within("#passenger-#{@passenger_1.id}") do
+        click_button('Remove Passenger')
+      end
+
+      expect(current_path).to eq(flight_path(@flight_1))
+    end
+
+    it 'I no longer see that passenger listed' do
+      visit flight_path(@flight_1)
+
+      within("#passenger-#{@passenger_1.id}") do
+        click_button('Remove Passenger')
+      end
+
+      expect(page).not_to have_content(@passenger_1.name)
+    end
+
+    it 'I see average age of adult passengers has been updated' do
+      visit flight_path(@flight_1)
+
+      within("#passenger-#{@passenger_1.id}") do
+        click_button('Remove Passenger')
+      end
+
+      within(".average-age-adult-passengers") do
+        expect(page).to have_content(28)
+      end
+    end
   end
 end
